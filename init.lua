@@ -15,7 +15,7 @@ local lazy_config = require "configs.lazy"
 -- load plugins
 require("lazy").setup({
   {
-    dir="~/AppData/Local/nvim/NvChad",
+    dir = "~/AppData/Local/nvim/NvChad",
     -- "https://github.com/hantianxiaoxue/NvChad.git",
     -- branch = "v2.5",
     lazy = false,
@@ -33,6 +33,27 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
+
+-- switch im
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  pattern = { "*" },
+  callback = function()
+    local input_status = tonumber(vim.fn.system "im-select.exe")
+    if input_status == 2052 then
+      vim.fn.system "im-select.exe 1033"
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+  pattern = { "*" },
+  callback = function()
+    local input_status = tonumber(vim.fn.system "im-select.exe")
+    if input_status == 1033 then
+      vim.fn.system "im-select.exe 2052"
+    end
+  end,
+})
+
 
 vim.schedule(function()
   require "mappings"

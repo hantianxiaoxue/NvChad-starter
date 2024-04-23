@@ -6,6 +6,13 @@ return {
       require "configs.conform"
     end,
   },
+  {
+    "andymass/vim-matchup",
+    lazy = false,
+    init = function()
+      vim.g.matchup_surround_enabled = 1
+    end,
+  },
   { "mfussenegger/nvim-jdtls" },
   {
     "wellle/visual-split.vim",

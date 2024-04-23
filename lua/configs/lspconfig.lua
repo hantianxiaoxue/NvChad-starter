@@ -42,3 +42,11 @@ lspconfig.rust_analyzer.setup {
   on_init = on_init,
   capabilities = capabilities,
 }
+
+-- vim 
+lspconfig.vimls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+

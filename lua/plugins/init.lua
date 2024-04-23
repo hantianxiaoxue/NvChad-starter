@@ -27,6 +27,15 @@ return {
     end,
   },
   {
+    "liuchengxu/vista.vim",
+    lazy = false,
+    init = function()
+      vim.g.vista_default_executive = "nvim_lsp"
+      vim.keymap.set("n", "<A-H>", "<cmd>Vista!!<CR>", { noremap = true, silent = true })
+    end,
+  },
+
+  {
     "mtth/locate.vim",
     lazy = false,
     init = function()

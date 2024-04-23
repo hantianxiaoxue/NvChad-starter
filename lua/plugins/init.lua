@@ -12,9 +12,9 @@ return {
     lazy = false,
     init = function()
       vim.keymap.set("n", "vp", "<cmd>vsplit<CR>")
-      vim.keymap.set("n", "sp", "<cmd>sp<CR>")
-      vim.keymap.set("v", "sp", "<cmd>VSSplitAbove<CR>")
-      vim.keymap.set("v", "sb", "<cmd>VSSplitBelow<CR>")
+      vim.keymap.set("v", "sp", "<Plug>(Visual-Split-VSSplitAbove)", { noremap = true, silent = true })
+      vim.keymap.set("n", "sp", "<cmd>split<CR>", { noremap = true, silent = true })
+      vim.keymap.set("v", "sb", "<Plug>(Visual-Split-VSSplitBelow)", { noremap = true, silent = true })
     end,
   },
   {

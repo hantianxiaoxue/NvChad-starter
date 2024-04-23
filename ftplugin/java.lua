@@ -29,7 +29,7 @@ end
 local config = {
   capabilities = capabilities,
   cmd = {
-    "D:/soft/java/jdk-22.0.1/bin/java",
+    "java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",

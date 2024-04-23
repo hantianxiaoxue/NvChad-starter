@@ -31,6 +31,7 @@ return {
     lazy = false,
     init = function()
       vim.g.vista_default_executive = "nvim_lsp"
+      vim.g.vista_disable_statusline = 1
       vim.keymap.set("n", "<A-H>", "<cmd>Vista!!<CR>", { noremap = true, silent = true })
     end,
   },
@@ -79,6 +80,11 @@ return {
   {
     "easymotion/vim-easymotion",
     lazy = false,
+    init = function()
+      vim.g.EasyMotion_do_mapping = 0
+      vim.keymap.set("n", "<Space>j", "<Plug>(easymotion-w)")
+      vim.keymap.set("n", "<Space>k", "<Plug>(easymotion-b)")
+    end,
   },
   {
     "dyng/ctrlsf.vim",
@@ -108,8 +114,17 @@ return {
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup {
-        -- Configuration here, or leave empty to use defaults
-        --
+        keymaps = {
+          normal = "s",
+          normal_cur = "ss",
+          normal_line = "S",
+          normal_cur_line = "SS",
+          visual = "s",
+          visual_line = "S",
+          delete = "ds",
+          change = "cs",
+          change_line = "cS",
+        },
       }
     end,
   },

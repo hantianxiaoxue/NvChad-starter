@@ -34,6 +34,27 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
+-- switch im
+--[[ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  pattern = { "*" },
+  callback = function()
+    local input_status = tonumber(vim.fn.system "im-select.exe")
+    if input_status == 2052 then
+      vim.fn.system "im-select.exe 1033"
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+  pattern = { "*" },
+  callback = function()
+    local input_status = tonumber(vim.fn.system "im-select.exe")
+    if input_status == 1033 then
+      vim.fn.system "im-select.exe 2052"
+    end
+  end,
+})
+]]
+
 -- easymotion lsp bugfix
 vim.api.nvim_create_autocmd("User", {
   pattern = { "EasyMotionPromptBegin" },

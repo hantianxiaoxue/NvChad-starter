@@ -55,7 +55,7 @@ return {
     "Valloric/ListToggle",
     lazy = false,
     init = function()
-      vim.g.lt_quickfix_list_toggle_map = "<A-q>"
+      vim.g.lt_quickfix_list_toggle_map = "<Space>q"
     end,
   },
   {
@@ -104,9 +104,9 @@ return {
       vim.g.ctrlsf_mapping = { next = "<A-j>", prev = "<A-k>", nfile = "J", pfile = "K" }
       vim.g.ctrlsf_position = "bottom"
       vim.g.ctrlsf_highlight_mode = 1
-      vim.keymap.set("v", "<A-s>", "<Plug>CtrlSFVwordExec", { desc = "Search current in all files" })
-      vim.keymap.set("n", "<A-s>", "<Plug>CtrlSFPrompt", { desc = "Search in all files" })
-      vim.keymap.set("n", "<A-d>", "<cmd>CtrlSFToggle<CR>", { desc = "Toggle search results" })
+      vim.keymap.set("v", "<Space>s", "<Plug>CtrlSFVwordExec", { desc = "Search current in all files" })
+      vim.keymap.set("n", "<Space>s", "<Plug>CtrlSFPrompt", { desc = "Search in all files" })
+      vim.keymap.set("n", "<Space>d", "<cmd>CtrlSFToggle<CR>", { desc = "Toggle search results" })
     end,
   },
   {

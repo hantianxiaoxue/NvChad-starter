@@ -37,7 +37,7 @@ require "nvchad.autocmds"
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   pattern = { "*" },
   callback = function()
-      vim.fn.system "AIMSwitcher.exe --imm 0"
+    vim.fn.system "AIMSwitcher.exe --imm 0"
   end,
 })
 
@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("User", {
     vim.diagnostic.disable()
   end,
 })
-function check_easymotion()
+local function check_easymotion()
   local timer = vim.loop.new_timer()
   timer:start(
     500,
@@ -75,6 +75,7 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
-vim.schedule(function()
+require "mappings"
+--[[ vim.schedule(function()
   require "mappings"
-end)
+end) ]]

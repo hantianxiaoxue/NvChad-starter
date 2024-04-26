@@ -21,6 +21,11 @@ let g:neovide_transparency = 0.85
 let g:neovide_floating_blur_amount_x = 0.0
 let g:neovide_floating_blur_amount_y = 0.0
 
+let g:neovide_padding_top = 30
+let g:neovide_padding_bottom = 0
+let g:neovide_padding_right = 0
+let g:neovide_padding_left = 0
+
 augroup ime_input
     autocmd!
     autocmd InsertLeave * execute "let g:neovide_input_ime=v:false"

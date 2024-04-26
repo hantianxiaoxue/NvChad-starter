@@ -9,3 +9,20 @@ noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
 noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
 inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a
 inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a
+
+
+let g:neovide_cursor_trail_size = 0.5
+let g:neovide_cursor_animation_length = 0.05
+let g:neovide_remember_window_size = v:true
+let g:neovide_fullscreen = v:true
+let g:neovide_confirm_quit = v:false
+let g:neovide_transparency = 0.8
+
+augroup ime_input
+    autocmd!
+    autocmd InsertLeave * execute "let g:neovide_input_ime=v:false"
+    autocmd InsertEnter * execute "let g:neovide_input_ime=v:true"
+    autocmd CmdlineEnter [/\?] execute "let g:neovide_input_ime=v:false"
+    autocmd CmdlineLeave [/\?] execute "let g:neovide_input_ime=v:true"
+augroup END
+

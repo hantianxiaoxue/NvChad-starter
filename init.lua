@@ -33,13 +33,16 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
+
 -- switch im
-vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-  pattern = { "*" },
-  callback = function()
-    vim.fn.system "AIMSwitcher.exe --imm 0"
-  end,
-})
+if not vim.g.neovide then
+  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    pattern = { "*" },
+    callback = function()
+      vim.fn.system "AIMSwitcher.exe --imm 0"
+    end,
+  })
+end
 
 -- easymotion lsp bugfix
 vim.api.nvim_create_autocmd("User", {

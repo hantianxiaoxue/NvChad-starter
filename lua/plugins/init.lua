@@ -7,6 +7,23 @@ return {
     end,
   },
   {
+    "phaazon/hop.nvim",
+    lazy = false,
+    config = function()
+      vim.keymap.set({"n","v"}, "<A-e>", "<cmd>HopWord<CR>")
+      require("hop").setup()
+    end,
+  },
+  --[[ {
+    "easymotion/vim-easymotion",
+    lazy = false,
+    init = function()
+      vim.g.EasyMotion_do_mapping = 0
+      vim.keymap.set("n", "<Space>j", "<Plug>(easymotion-w)")
+      vim.keymap.set("n", "<Space>k", "<Plug>(easymotion-b)")
+    end,
+  }, ]]
+  {
     "andymass/vim-matchup",
     lazy = false,
     init = function()
@@ -84,15 +101,6 @@ return {
   {
     "rhysd/clever-f.vim",
     lazy = false,
-  },
-  {
-    "easymotion/vim-easymotion",
-    lazy = false,
-    init = function()
-      vim.g.EasyMotion_do_mapping = 0
-      vim.keymap.set("n", "<Space>j", "<Plug>(easymotion-w)")
-      vim.keymap.set("n", "<Space>k", "<Plug>(easymotion-b)")
-    end,
   },
   {
     "dyng/ctrlsf.vim",

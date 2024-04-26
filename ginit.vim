@@ -18,6 +18,9 @@ let g:neovide_fullscreen = v:true
 let g:neovide_confirm_quit = v:false
 let g:neovide_transparency = 0.8
 
+let g:neovide_floating_blur_amount_x = 0.0
+let g:neovide_floating_blur_amount_y = 0.0
+
 augroup ime_input
     autocmd!
     autocmd InsertLeave * execute "let g:neovide_input_ime=v:false"

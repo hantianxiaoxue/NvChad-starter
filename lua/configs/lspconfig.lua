@@ -4,49 +4,47 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "tsserver", "volar", "rust_analyzer", "vimls" }
 
+local npm_home = os.getenv "NPM_HOME"
 -- lsps with default config
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  if require("neoconf").get(lsp .. ".disable") then
+    return
+  end
+  local config = {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
   }
-end
-
--- typescript
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-  init_options = {
-    plugins = {
-      {
-        name = "@vue/typescript-plugin",
-        location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-        languages = { "javascript", "typescript", "vue" },
+  if lsp == "volar" then
+    config.init_options = {
+      typescript = {
+        tsdk = npm_home .. "/node_modules/typescript/lib",
       },
-    },
-  },
-  filetypes = {
-    "javascript",
-    "typescript",
-    "vue",
-  },
-}
+    }
+    config.filetypes = {
+      "typescript",
+      "javascript",
+      "vue",
+    }
+  end
+  if lsp == "tsserver" then
+    config.init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = npm_home .. "/node_modules/@vue/typescript-plugin",
+          languages = { "javascript", "typescript", "vue" },
+        },
+      },
+    }
+    config.filetypes = {
+      "javascript",
+      "typescript",
+      "vue",
+    }
+  end
 
--- rust
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
--- vim 
-lspconfig.vimls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
+  lspconfig[lsp].setup(config)
+end

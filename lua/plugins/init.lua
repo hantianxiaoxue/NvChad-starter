@@ -10,19 +10,10 @@ return {
     "phaazon/hop.nvim",
     lazy = false,
     config = function()
-      vim.keymap.set({"n","v"}, "<A-e>", "<cmd>HopWord<CR>")
+      vim.keymap.set({ "n", "v" }, "<A-e>", "<cmd>HopWord<CR>")
       require("hop").setup()
     end,
   },
-  --[[ {
-    "easymotion/vim-easymotion",
-    lazy = false,
-    init = function()
-      vim.g.EasyMotion_do_mapping = 0
-      vim.keymap.set("n", "<Space>j", "<Plug>(easymotion-w)")
-      vim.keymap.set("n", "<Space>k", "<Plug>(easymotion-b)")
-    end,
-  }, ]]
   {
     "andymass/vim-matchup",
     lazy = false,

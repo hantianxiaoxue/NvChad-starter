@@ -6,7 +6,7 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local servers = { "html", "cssls", "tsserver", "volar", "rust_analyzer", "vimls" }
 
-local npm_home = os.getenv "NPM_HOME"
+local npm_home = os.getenv "NPM_HOME" or ""
 -- lsps with default config
 for _, lsp in ipairs(servers) do
   if require("neoconf").get(lsp .. ".disable") then

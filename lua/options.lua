@@ -6,8 +6,13 @@ local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
 
 if vim.fn.has "win32" ~= 0 then
+  local function is_command_exists(cmd)
+    local status = os.execute(cmd .. " --version >NUL 2>&1")
+    print("status="..status)
+    return status == 0
+  end
   -- change term to pwsh
-  o.shell = "pwsh.exe"
+  o.shell = is_command_exists "pwsh.exe" and "pwsh.exe" or "cmd.exe"
   o.shellcmdflag = "-command "
   o.shellquote = '"'
   o.shellxquote = ""

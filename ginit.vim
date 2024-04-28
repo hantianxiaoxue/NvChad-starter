@@ -22,7 +22,7 @@ let g:neovide_cursor_animation_length = 0.00
 let g:neovide_remember_window_size = v:true
 let g:neovide_fullscreen = v:true
 let g:neovide_confirm_quit = v:false
-let g:neovide_transparency = 0.85
+let g:neovide_transparency = 1
 
 let g:neovide_floating_blur_amount_x = 0.0
 let g:neovide_floating_blur_amount_y = 0.0

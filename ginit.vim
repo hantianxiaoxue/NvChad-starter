@@ -9,7 +9,7 @@ endfunction
 function! ToggleTransparency()
   let g:neovide_transparency = g:neovide_transparency==1 ? 0.85 : 1
 endfunction
-noremap <C-T> :call ToggleTransparency()<CR>
+noremap <C-t> :call ToggleTransparency()<CR>
 
 noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
 noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>

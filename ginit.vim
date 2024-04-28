@@ -6,10 +6,10 @@ function! AdjustFontSize(amount)
 endfunction
 
 
-function! AdjustTransparency()
-  let g:neovide_transparency = 1
+function! ToggleTransparency()
+  let g:neovide_transparency = g:neovide_transparency==1 ? 0.85 : 1
 endfunction
-noremap <C-T> :call AdjustTransparency()<CR>
+noremap <C-T> :call ToggleTransparency()<CR>
 
 noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
 noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>

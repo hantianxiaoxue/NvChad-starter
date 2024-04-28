@@ -113,6 +113,7 @@ return {
     lazy = false,
     init = function()
       vim.g.VM_leader = ";"
+      vim.g.VM_theme = "nord"
     end,
   },
   {

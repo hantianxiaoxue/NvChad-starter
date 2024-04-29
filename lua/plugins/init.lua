@@ -6,6 +6,7 @@ return {
       require "configs.conform"
     end,
   },
+  { "slint-ui/vim-slint", lazy = false },
   {
     "phaazon/hop.nvim",
     lazy = false,

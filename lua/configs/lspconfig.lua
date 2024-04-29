@@ -4,14 +4,11 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "tsserver", "volar", "rust_analyzer", "vimls" }
+local servers = { "html", "cssls", "tsserver", "volar", "rust_analyzer", "vimls" ,"slint_lsp"}
 
 local npm_home = os.getenv "NPM_HOME" or ""
 -- lsps with default config
 for _, lsp in ipairs(servers) do
-  if require("neoconf").get(lsp .. ".disable") then
-    return
-  end
   local config = {
     on_attach = on_attach,
     on_init = on_init,

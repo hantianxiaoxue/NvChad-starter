@@ -8,7 +8,6 @@ local o = vim.o
 if vim.fn.has "win32" ~= 0 then
   local function is_command_exists(cmd)
     local status = os.execute(cmd .. " --version >NUL 2>&1")
-    print("status="..status)
     return status == 0
   end
   -- change term to pwsh

@@ -70,6 +70,9 @@ return {
   {
     "terryma/vim-expand-region",
     lazy = false,
+    init = function()
+      vim.keymap.set("v", "<Space>", "<Plug>(expand_region_expand)", { desc = "Expand region" })
+    end,
   },
   {
     "mbbill/undotree",

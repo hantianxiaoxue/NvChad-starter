@@ -151,7 +151,38 @@ return {
       }
     end,
   },
-
+  {
+    "luckasRanarison/clear-action.nvim",
+    lazy = false,
+    opts = {
+      signs = {
+        show_count = false,
+        show_label = true,
+        combine = true,
+      },
+      popup = {
+        hide_cursor = true,
+      },
+      mappings = {
+        code_action = { "<A-.>", "Code action" },
+        apply_first = { "<A-L>", "Apply" },
+        quickfix = { "<Space>r", "Quickfix" },
+        actions = {
+          ["rust_analyzer"] = {
+            ["Import"] = { "<A-I>", "Import" },
+          },
+        },
+      },
+      quickfix_filters = {
+        ["rust_analyzer"] = {
+          ["E0412"] = "Import",
+          ["E0425"] = "Import",
+          ["E0433"] = "Import",
+          ["unused_imports"] = "remove",
+        },
+      },
+    },
+  },
   {
     "williamboman/mason.nvim",
     opts = {

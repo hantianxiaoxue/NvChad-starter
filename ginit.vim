@@ -1,5 +1,5 @@
-let s:fontsize = 13
-set guifont=JetBrainsMono\ NFM:h13
+let s:fontsize = 12
+set guifont=JetBrainsMono\ NFM:h12
 function! AdjustFontSize(amount)
   let s:fontsize = s:fontsize+a:amount
   :execute "set guifont=JetBrainsMono\\ NFM:h" . s:fontsize

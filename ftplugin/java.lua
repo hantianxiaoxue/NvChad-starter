@@ -142,10 +142,6 @@ local config = {
       },
       format = {
         enabled = true,
-        settings = {
-          url = vim.fn.expand "~/intellij-java-google-style.xml",
-          profile = "GoogleStyle",
-        },
       },
       saveActions = {
         organizeImports = false,

@@ -1,21 +1,16 @@
 local jdtls = require "jdtls"
 local conf = require("nvconfig").ui.lsp
--- Change or delete this if you don't depend on nvim-cmp for completions.
 local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
 local map = vim.keymap.set
--- Change jdtls_path to wherever you have your Eclipse Java development tools (JDT) Language Server downloaded to.
 local jdtls_path = vim.fn.stdpath "data" .. "/mason/packages/eclipse-jdt-ls"
 local launcher_jar = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 local workspace_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
--- for completions
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
 
 local function get_config_dir()
-  -- Unlike some other programming languages (e.g. JavaScript)
-  -- lua considers 0 truthy!
   if vim.fn.has "linux" == 1 then
     return "config_linux"
   elseif vim.fn.has "mac" == 1 then
@@ -42,7 +37,7 @@ local config = {
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
     vim.fs.normalize("-javaagent:" .. jdtls_path .. "/lombok.jar"),
-    vim.fs.normalize("-Xbootclasspath/a:" .. jdtls_path .. "/lombok.jar"),
+    -- vim.fs.normalize("-Xbootclasspath/a:" .. jdtls_path .. "/lombok.jar"),
     "-jar",
     launcher_jar,
     "-configuration",
@@ -50,10 +45,7 @@ local config = {
     "-data",
     vim.fn.expand "~/.cache/jdtls-workspace/" .. workspace_dir,
   },
-  settings = {
-    ["java.format.settings.url"] = vim.fn.expand "~/formatter.xml",
-  },
-  root_dir = vim.fs.dirname(vim.fs.find({ "pom.xml", ".git", "mvnw", "gradlew" }, { upward = true })[1]),
+  root_dir = vim.fs.dirname(vim.fs.find({ "pom.xml", ".classpath", ".git", "mvnw", "gradlew" }, { upward = true })[1]),
   init_options = { extendedClientCapabilities = jdtls.extendedClientCapabilities },
   on_attach = function(client, bufnr)
     local function opts(desc)
@@ -94,5 +86,93 @@ local config = {
       require("nvchad.lsp.signature").setup(client, bufnr)
     end
   end,
+  -- more config see https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+  settings = {
+    java = {
+      home = os.getenv "JAVA_HOME" or "",
+      project = {
+        referencedLibraries = {},
+      },
+      references = {
+        includeDecompiledSources = true,
+      },
+      eclipse = {
+        downloadSources = false,
+      },
+      maven = {
+        downloadSources = false,
+      },
+      errors = {
+        incompleteClasspath = {
+          severity = "warning",
+        },
+      },
+      configuration = {
+        updateBuildConfiguration = "interactive",
+        maven = {
+          userSettings = nil,
+        },
+      },
+      trace = {
+        server = "verbose",
+      },
+      import = {
+        gradle = {
+          enabled = true,
+        },
+        maven = {
+          enabled = true,
+        },
+        exclusions = {
+          "**/node_modules/**",
+          "**/.metadata/**",
+          "**/archetype-resources/**",
+          "**/META-INF/maven/**",
+          "/**/test/**",
+        },
+      },
+      referencesCodeLens = {
+        enabled = false,
+      },
+      signatureHelp = {
+        enabled = false,
+      },
+      implementationsCodeLens = {
+        enabled = false,
+      },
+      format = {
+        enabled = true,
+        settings = {
+          url = vim.fn.expand "~/intellij-java-google-style.xml",
+          profile = "GoogleStyle",
+        },
+      },
+      saveActions = {
+        organizeImports = false,
+      },
+      contentProvider = {
+        preferred = "fernflower",
+      },
+      autobuild = {
+        enabled = false,
+      },
+      completion = {
+        favoriteStaticMembers = {
+          "org.junit.Assert.*",
+          "org.junit.Assume.*",
+          "org.junit.jupiter.api.Assertions.*",
+          "org.junit.jupiter.api.Assumptions.*",
+          "org.junit.jupiter.api.DynamicContainer.*",
+          "org.junit.jupiter.api.DynamicTest.*",
+        },
+        importOrder = {
+          "java",
+          "javax",
+          "com",
+          "org",
+        },
+      },
+    },
+  },
 }
 jdtls.start_or_attach(config)

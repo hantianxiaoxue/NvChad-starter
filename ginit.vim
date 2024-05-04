@@ -17,8 +17,8 @@ inoremap <C-ScrollWheelUp> <Esc>:call AdjustFontSize(1)<CR>a
 inoremap <C-ScrollWheelDown> <Esc>:call AdjustFontSize(-1)<CR>a
 
 let g:neovide_hide_mouse_when_typing = v:true
-let g:neovide_cursor_trail_size = 0.0
-let g:neovide_cursor_animation_length = 0.00
+let g:neovide_cursor_trail_size = 0.2
+let g:neovide_cursor_animation_length = 0.08
 let g:neovide_remember_window_size = v:true
 let g:neovide_fullscreen = v:true
 let g:neovide_confirm_quit = v:false

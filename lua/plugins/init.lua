@@ -16,7 +16,7 @@ return {
     "phaazon/hop.nvim",
     lazy = false,
     config = function()
-      vim.keymap.set({ "n", "v" }, "<A-e>", "<cmd>HopWord<CR>")
+      vim.keymap.set({ "n", "v" }, "<A-e>", "<cmd>HopWordMW<CR>")
       require("hop").setup()
     end,
   },

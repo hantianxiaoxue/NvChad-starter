@@ -6,6 +6,11 @@ return {
       require "configs.conform"
     end,
   },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
   { "slint-ui/vim-slint", lazy = false },
   {
     "phaazon/hop.nvim",
@@ -92,10 +97,6 @@ return {
       -- vim.g.bookmark_no_default_key_mappings = 1
       vim.g.bookmark_auto_close = 1
     end,
-  },
-  {
-    "rhysd/clever-f.vim",
-    lazy = false,
   },
   {
     "dyng/ctrlsf.vim",

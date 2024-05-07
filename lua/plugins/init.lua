@@ -17,6 +17,10 @@ return {
       vim.keymap.set({ "o", "x" }, "ie", '<cmd>lua require("various-textobjs").subword("inner")<CR>')
       vim.keymap.set({ "o", "x" }, "an", '<cmd>lua require("various-textobjs").number("outer")<CR>')
       vim.keymap.set({ "o", "x" }, "in", '<cmd>lua require("various-textobjs").number("inner")<CR>')
+      vim.keymap.set({ "o", "x" }, "am", '<cmd>lua require("various-textobjs").chainMember("outer")<CR>')
+      vim.keymap.set({ "o", "x" }, "im", '<cmd>lua require("various-textobjs").chainMember("inner")<CR>')
+      vim.keymap.set({ "o", "x" }, "al", '<cmd>lua require("various-textobjs").url("outer")<CR>')
+      vim.keymap.set({ "o", "x" }, "il", '<cmd>lua require("various-textobjs").url("inner")<CR>')
       vim.keymap.set({ "o", "x" }, "|", '<cmd>lua require("various-textobjs").column()<CR>')
     end,
   },

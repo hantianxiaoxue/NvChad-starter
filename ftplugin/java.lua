@@ -10,6 +10,7 @@ local workspace_dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local client_capabilities = vim.lsp.protocol.make_client_capabilities()
 local capabilities = cmp_nvim_lsp.default_capabilities(client_capabilities)
 
+local java_home = os.getenv "LSP_JAVA_HOME" or ""
 local function get_config_dir()
   if vim.fn.has "linux" == 1 then
     return "config_linux"
@@ -24,7 +25,7 @@ end
 local config = {
   capabilities = capabilities,
   cmd = {
-    "java",
+    vim.fs.normalize(java_home .. "/bin/java"),
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",

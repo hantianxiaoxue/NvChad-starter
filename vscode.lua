@@ -87,8 +87,6 @@ require("lazy").setup({
 -- keymap
 
 map("n", "vv", "^v$", { desc = "Select current line" })
-map("n", "<A-i>", "<C-i>", { desc = "Focus to prev" })
-map("n", "<A-o>", "<C-o>", { desc = "Focus to next" })
 map("n", "<leader>y", '"ayiw', { desc = "Copy current word" })
 map("n", "<leader>p", 'viw"ap', { desc = "Paste current word" })
 map("v", "<", "<gv", { desc = "Indent left" })
@@ -120,6 +118,9 @@ map("n", "q", "")
 map({ "v" }, "<C-c>", '"*y')
 map({ "v", "i" }, "<A-c>", '"*y')
 map({ "n", "i" }, "<A-v>", '"*p')
+
+map("n", "<A-i>", "<Cmd>lua require('vscode-neovim').call('workbench.action.navigateBack')<CR><Esc>")
+map("n", "<A-o>", "<Cmd>lua require('vscode-neovim').call('workbench.action.navigateForward')<CR><Esc>")
 map({ "n", "i", "v" }, "<A-s>", "<Cmd>lua require('vscode-neovim').call('workbench.action.files.save')<CR><Esc>")
 map({ "n", "i", "v" }, "<A-q>", "<Cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<CR>")
 map({ "n" }, "<leader>w", "<Cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<CR>")

@@ -7,6 +7,14 @@ return {
     end,
   },
   {
+    "folke/trouble.nvim",
+    lazy = true,
+    cmd = { "TroubleToggle", "Trouble", "TroubleRefresh" },
+    config = function()
+      require("trouble").setup()
+    end,
+  },
+  {
     -- TODO FIX HACK WARN PERF NOTE TEST
     "folke/todo-comments.nvim",
     lazy = false,

@@ -7,6 +7,18 @@ return {
     end,
   },
   {
+    -- TODO FIX HACK WARN PERF NOTE TEST
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      vim.keymap.set("n", "<A-T>", "<cmd>TodoQuickFix<CR>", { noremap = true, silent = true }),
+    },
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+  {
     "chrisgrieser/nvim-various-textobjs",
     lazy = false,
     opts = { useDefaultKeymaps = false },

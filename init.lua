@@ -34,6 +34,14 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
+-- jdtls
+vim.cmd [[
+augroup jdtls_lsp
+    autocmd!
+    autocmd FileType java lua require'configs.jdtls'.setup()
+augroup end
+]]
+
 -- switch im
 if not vim.g.neovide then
   vim.api.nvim_create_autocmd({ "InsertLeave" }, {

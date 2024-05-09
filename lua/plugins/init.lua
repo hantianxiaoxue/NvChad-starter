@@ -120,15 +120,6 @@ return {
     end,
   },
   {
-    "mbbill/undotree",
-    lazy = false,
-    init = function()
-      vim.g.undotree_WindowLayout = 2
-      vim.g.undotree_SetFocusWhenToggle = 1
-      vim.keymap.set({ "n", "i", "v" }, "<A-u>", "<cmd>UndotreeToggle<CR>")
-    end,
-  },
-  {
     "MattesGroeger/vim-bookmarks",
     lazy = false,
     init = function()

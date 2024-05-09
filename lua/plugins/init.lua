@@ -53,9 +53,8 @@ return {
     end,
   },
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {},
+    "rhysd/clever-f.vim",
+    lazy = false,
   },
   {
     "chrisgrieser/nvim-spider",

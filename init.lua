@@ -35,12 +35,12 @@ dofile(vim.g.base46_cache .. "statusline")
 require "nvchad.autocmds"
 
 -- jdtls
-vim.cmd [[
-augroup jdtls_lsp
-    autocmd!
-    autocmd FileType java lua require'configs.jdtls'.setup()
-augroup end
-]]
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function()
+    require("configs.jdtls").setup()
+  end,
+})
 
 -- switch im
 if not vim.g.neovide then

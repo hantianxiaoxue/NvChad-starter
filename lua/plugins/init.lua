@@ -7,6 +7,14 @@ return {
     end,
   },
   {
+    "nathom/filetype.nvim",
+    lazy = true,
+    event = "User FileOpened",
+    config = function()
+      require("filetype").setup()
+    end,
+  },
+  {
     "folke/trouble.nvim",
     lazy = true,
     cmd = { "TroubleToggle", "Trouble", "TroubleRefresh" },

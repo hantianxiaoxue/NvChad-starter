@@ -97,7 +97,12 @@ return {
     "jlanzarotta/bufexplorer",
     lazy = false,
     init = function()
-      vim.keymap.set({ "n", "i" }, "<A-f>", "<cmd>ToggleBufExplorer<CR>")
+      vim.keymap.set({ "n", "i" }, "<A-f>", function()
+        if vim.fn.expand "%" == "NvimTree_1" then
+          vim.api.nvim_feedkeys(vim.api.nvim_eval '"\\<C-w>w"', "x", true)
+        end
+        vim.cmd "ToggleBufExplorer"
+      end)
       vim.g.bufExplorerDetailedHelp = 0
       vim.g.bufExplorerDefaultHelp = 0
     end,

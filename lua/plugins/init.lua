@@ -7,6 +7,10 @@ return {
     end,
   },
   {
+    "mateuszwieloch/automkdir.nvim",
+    lazy = false,
+  },
+  {
     "nathom/filetype.nvim",
     lazy = true,
     event = "User FileOpened",

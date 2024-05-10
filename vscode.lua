@@ -34,11 +34,6 @@ require("lazy").setup({
     end,
   },
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
-  {
     "chrisgrieser/nvim-spider",
     lazy = true,
     init = function()
@@ -97,6 +92,7 @@ require("lazy").setup({
       require("Comment").setup(opts)
     end,
   },
+  { "romainl/vim-cool", lazy = false },
 }, lazy_config)
 -- keymap
 

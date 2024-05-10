@@ -12,10 +12,10 @@ return {
   },
   {
     "nathom/filetype.nvim",
-    lazy = true,
+    lazy = false,
     event = "User FileOpened",
     config = function()
-      require("filetype").setup()
+      require("filetype").setup {}
     end,
   },
   {

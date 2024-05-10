@@ -6,6 +6,7 @@ return {
       require "configs.conform"
     end,
   },
+  { "romainl/vim-cool", lazy = false },
   {
     "mateuszwieloch/automkdir.nvim",
     lazy = false,

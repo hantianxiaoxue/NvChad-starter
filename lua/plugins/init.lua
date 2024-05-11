@@ -118,6 +118,11 @@ return {
       vim.g.vista_default_executive = "nvim_lsp"
       vim.g.vista_disable_statusline = 1
       vim.g.vista_echo_cursor = 0
+      vim.g.vista_executive_for = {
+        vimwiki = "markdown",
+        pandoc = "markdown",
+        markdown = "toc",
+      }
       vim.keymap.set("n", "<A-H>", "<cmd>Vista!!<CR>", { noremap = true, silent = true })
     end,
   },

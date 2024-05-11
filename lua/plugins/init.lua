@@ -13,9 +13,9 @@ return {
       local oil = require "oil"
       oil.setup {
         use_default_keymaps = false,
-        preview = {
-          min_width = { 0.8 },
-        },
+        --[[ win_options = {
+          winbar = "%{v:lua.require('oil').get_current_dir()}",
+        }, ]]
         keymaps = {
           ["?"] = "actions.show_help",
           ["<CR>"] = "actions.select",

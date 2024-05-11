@@ -6,6 +6,71 @@ return {
       require "configs.conform"
     end,
   },
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    init = function()
+      local oil = require "oil"
+      oil.setup {
+        use_default_keymaps = false,
+        preview = {
+          min_width = { 0.8 },
+        },
+        keymaps = {
+          ["?"] = "actions.show_help",
+          ["<CR>"] = "actions.select",
+          ["vp"] = "actions.select_vsplit",
+          ["sp"] = "actions.select_split",
+          ["<C-p>"] = "actions.preview",
+          ["q"] = "actions.close",
+          ["R"] = "actions.refresh",
+          ["<A-[>"] = "actions.parent",
+          ["<A-]>"] = "actions.select",
+          ["<Space>c"] = "actions.cd",
+          ["gy"] = {
+            callback = function()
+              local entry = oil.get_cursor_entry()
+              local dir = oil.get_current_dir()
+              if not entry or not dir then
+                return
+              end
+              local path = dir .. entry.name
+              vim.fn.setreg("*", path)
+              vim.notify(string.format("Copied: '%s'", path), vim.log.levels.INFO)
+            end,
+            desc = "Copy full path",
+          },
+          ["ge"] = {
+            callback = function()
+              local entry = oil.get_cursor_entry()
+              if not entry then
+                return
+              end
+              vim.fn.setreg("*", entry.name)
+              vim.notify(string.format("Copied: '%s'", entry.name), vim.log.levels.INFO)
+            end,
+            desc = "Copy file name",
+          },
+          ["gs"] = {
+            callback = function()
+              local entry = oil.get_cursor_entry()
+              local dir = oil.get_current_dir()
+              if not entry or not dir then
+                return
+              end
+              if entry.type == "file" then
+                require("oil.actions").open_external.callback()
+              elseif vim.fn.has "win32" == 1 then
+                vim.fn.jobstart("explorer.exe " .. dir .. entry.name)
+              end
+            end,
+            desc = "Open external",
+          },
+        },
+      }
+      vim.keymap.set("n", "<A-N>", "<CMD>Oil<CR>", { desc = "Open oil directory" })
+    end,
+  },
   { "romainl/vim-cool", lazy = false },
   {
     "mateuszwieloch/automkdir.nvim",

@@ -91,7 +91,13 @@ return {
     lazy = false,
     event = "User FileOpened",
     config = function()
-      require("filetype").setup {}
+      require("filetype").setup {
+        overrides = {
+          extensions = {
+            xml = "xml",
+          },
+        },
+      }
     end,
   },
   {

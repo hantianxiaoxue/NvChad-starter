@@ -47,6 +47,8 @@ require("lazy").setup({
     lazy = false,
     config = function()
       vim.keymap.set({ "n", "v" }, "<A-e>", "<cmd>HopWordMW<CR>")
+      vim.keymap.set({ "n", "v" }, "<Space>e", "<cmd>HopWordMW<CR>")
+      vim.keymap.set({ "n", "v" }, "?", "<cmd>HopChar2<CR>")
       require("hop").setup()
     end,
   },

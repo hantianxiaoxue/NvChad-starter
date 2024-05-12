@@ -17,7 +17,8 @@ return {
           winbar = "%{v:lua.require('oil').get_current_dir()}",
         }, ]]
         keymaps = {
-          ["?"] = "actions.show_help",
+          ["g?"] = "actions.show_help",
+          ["gh"] = "actions.show_help",
           ["<CR>"] = "actions.select",
           ["vp"] = "actions.select_vsplit",
           ["sp"] = "actions.select_split",
@@ -141,6 +142,8 @@ return {
     lazy = false,
     config = function()
       vim.keymap.set({ "n", "v" }, "<A-e>", "<cmd>HopWordMW<CR>")
+      vim.keymap.set({ "n", "v" }, "<Space>e", "<cmd>HopWordMW<CR>")
+      vim.keymap.set({ "n", "v" }, "?", "<cmd>HopChar2MW<CR>")
       require("hop").setup()
     end,
   },

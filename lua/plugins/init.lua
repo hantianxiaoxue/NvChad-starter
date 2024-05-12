@@ -13,6 +13,15 @@ return {
       local oil = require "oil"
       oil.setup {
         use_default_keymaps = false,
+        float = {
+          padding = 2,
+          max_width = 50,
+          max_height = 40,
+          border = "rounded",
+          win_options = {
+            winblend = 0,
+          },
+        },
         --[[ win_options = {
           winbar = "%{v:lua.require('oil').get_current_dir()}",
         }, ]]
@@ -69,7 +78,7 @@ return {
           },
         },
       }
-      vim.keymap.set("n", "<A-N>", "<CMD>Oil<CR>", { desc = "Open oil directory" })
+      vim.keymap.set("n", "<A-N>", "<CMD>Oil --float<CR>", { desc = "Open oil directory" })
     end,
   },
   { "romainl/vim-cool", lazy = false },

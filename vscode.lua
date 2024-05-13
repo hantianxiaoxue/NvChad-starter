@@ -17,6 +17,7 @@ require("lazy").setup({
 
   {
     "chrisgrieser/nvim-various-textobjs",
+    dependencies = { "michaeljsmith/vim-indent-object" },
     lazy = false,
     opts = { useDefaultKeymaps = false },
     init = function()
@@ -30,7 +31,21 @@ require("lazy").setup({
       vim.keymap.set({ "o", "x" }, "im", '<cmd>lua require("various-textobjs").chainMember("inner")<CR>')
       vim.keymap.set({ "o", "x" }, "al", '<cmd>lua require("various-textobjs").url("outer")<CR>')
       vim.keymap.set({ "o", "x" }, "il", '<cmd>lua require("various-textobjs").url("inner")<CR>')
+      vim.keymap.set({ "o", "x" }, "aq", '<cmd>lua require("various-textobjs").anyQuote("outer")<CR>')
+      vim.keymap.set({ "o", "x" }, "iq", '<cmd>lua require("various-textobjs").anyQuote("inner")<CR>')
       vim.keymap.set({ "o", "x" }, "|", '<cmd>lua require("various-textobjs").column()<CR>')
+      vim.keymap.set("n", "dsi", function()
+        require("various-textobjs").indentation("outer", "outer")
+        local indentationFound = vim.fn.mode():find "V"
+        if not indentationFound then
+          return
+        end
+        vim.cmd.normal { "<", bang = true }
+        local endBorderLn = vim.api.nvim_buf_get_mark(0, ">")[1]
+        local startBorderLn = vim.api.nvim_buf_get_mark(0, "<")[1]
+        vim.cmd(tostring(endBorderLn) .. " delete")
+        vim.cmd(tostring(startBorderLn) .. " delete")
+      end, { desc = "Delete Surrounding Indentation" })
     end,
   },
   {

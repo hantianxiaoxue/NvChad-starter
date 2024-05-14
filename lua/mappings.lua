@@ -9,7 +9,9 @@ local map = vim.keymap.set
 -- map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
-map("v", "<C-c>", "<Plug>OSCYankVisual<CR>")
+if not vim.g.neovide then
+  vim.keymap.set({ "v", "i" }, "<C-c>", "<Plug>OSCYankVisual<CR>", { desc = "Copy" })
+end
 map("n", "<F5>", function()
   local filename = vim.fn.expand "%:t"
   local cword = vim.fn.expand "<cword>"

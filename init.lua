@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- switch im
-if not vim.g.neovide then
+if vim.fn.has "win32" == 1 or vim.fn.has "wsl" then
   vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     pattern = { "*" },
     callback = function()

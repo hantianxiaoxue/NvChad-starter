@@ -257,6 +257,10 @@ return {
     init = function()
       vim.g.VM_leader = ";"
       vim.g.VM_theme = "sand"
+      vim.g.VM_set_statusline = 0
+      vim.g.VM_silent_exit = 1
+      vim.g.VM_show_warnings = 0
+      vim.g.VM_case_setting = "sensitive"
     end,
   },
   {
@@ -378,6 +382,23 @@ return {
       end
 
       vim.keymap.set("n", "<A-\\>", swap_windows, { desc = "Swap windows" })
+    end,
+  },
+  {
+    "ethanholz/nvim-lastplace",
+    lazy = false,
+    event = { "User FileOpened" },
+    config = function()
+      require("nvim-lastplace").setup {
+        lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+        lastplace_ignore_filetype = {
+          "gitcommit",
+          "gitrebase",
+          "svn",
+          "hgcommit",
+        },
+        lastplace_open_folds = true,
+      }
     end,
   },
 }

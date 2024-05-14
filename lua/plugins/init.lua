@@ -87,20 +87,6 @@ return {
     lazy = false,
   },
   {
-    "nathom/filetype.nvim",
-    lazy = false,
-    event = "User FileOpened",
-    config = function()
-      require("filetype").setup {
-        overrides = {
-          extensions = {
-            xml = "xml",
-          },
-        },
-      }
-    end,
-  },
-  {
     "folke/trouble.nvim",
     lazy = true,
     cmd = { "TroubleToggle", "Trouble", "TroubleRefresh" },

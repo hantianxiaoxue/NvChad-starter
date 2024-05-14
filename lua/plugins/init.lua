@@ -6,6 +6,7 @@ return {
       require "configs.conform"
     end,
   },
+  { "ojroques/vim-oscyank", lazy = false },
   {
     "stevearc/oil.nvim",
     opts = {},

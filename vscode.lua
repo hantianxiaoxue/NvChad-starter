@@ -73,6 +73,13 @@ require("lazy").setup({
     init = function()
       vim.g.VM_leader = ";"
       vim.g.VM_theme = "sand"
+      vim.g.VM_set_statusline = 0
+      vim.g.VM_silent_exit = 1
+      vim.g.VM_show_warnings = 0
+      vim.g.VM_case_setting = "sensitive"
+      vim.g.VM_maps = {
+        ["Reselect Last"] = ";gv",
+      }
     end,
   },
   {

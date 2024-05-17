@@ -183,7 +183,7 @@ map("n", "<A-k>", "<Cmd>lua require('vscode-neovim').call('workbench.action.navi
 map("n", "<A-j>", "<Cmd>lua require('vscode-neovim').call('workbench.action.navigateDown')<CR>")
 
 -- switch im
-if not vim.g.neovide then
+if vim.fn.executable "AIMSwitcher.exe" == 1 then
   vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     pattern = { "*" },
     callback = function()

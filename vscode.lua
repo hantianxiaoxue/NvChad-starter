@@ -61,7 +61,6 @@ require("lazy").setup({
     "phaazon/hop.nvim",
     lazy = false,
     config = function()
-      vim.keymap.set({ "n", "v" }, "<A-e>", "<cmd>HopWordMW<CR>")
       vim.keymap.set({ "n", "v" }, "<Space>e", "<cmd>HopWordMW<CR>")
       vim.keymap.set({ "n", "v" }, "?", "<cmd>HopChar2<CR>")
       require("hop").setup()
@@ -158,7 +157,7 @@ map("n", "<A-i>", "<Cmd>lua require('vscode-neovim').call('workbench.action.navi
 map({ "n", "i", "v" }, "<A-s>", "<Cmd>lua require('vscode-neovim').call('workbench.action.files.save')<CR><Esc>")
 map({ "n", "i", "v" }, "<A-q>", "<Cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<CR>")
 map({ "n" }, "<leader>w", "<Cmd>lua require('vscode-neovim').call('workbench.action.closeActiveEditor')<CR>")
-map({ "n" }, "<leader>e", "<Cmd>lua require('vscode-neovim').call('workbench.view.explorer')<CR>")
+map({ "n" }, "<A-e>", "<Cmd>lua require('vscode-neovim').call('workbench.view.explorer')<CR>")
 map({ "n", "i" }, "<tab>", "<Cmd>lua require('vscode-neovim').call('workbench.action.nextEditorInGroup')<CR>")
 map({ "n", "i" }, "<A-Enter>", "<Cmd>lua require('vscode-neovim').call('workbench.action.previousEditorInGroup')<CR>")
 map({ "n", "i" }, "<A-F>", "<Cmd>lua require('vscode-neovim').call('editor.action.formatDocument')<CR>")

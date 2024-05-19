@@ -23,6 +23,9 @@ return {
             winblend = 0,
           },
         },
+        view_options = {
+          show_hidden = false,
+        },
         --[[ win_options = {
           winbar = "%{v:lua.require('oil').get_current_dir()}",
         }, ]]

@@ -52,6 +52,16 @@ if vim.fn.executable "AIMSwitcher.exe" == 1 then
   })
 end
 
+-- termimal start in insert mode
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+  pattern = { "*" },
+  callback = function()
+    if vim.opt.buftype:get() == "terminal" then
+      vim.cmd ":startinsert"
+    end
+  end,
+})
+
 require "mappings"
 --[[ vim.schedule(function()
   require "mappings"

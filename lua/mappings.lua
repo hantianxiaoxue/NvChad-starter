@@ -15,9 +15,7 @@ map(
   { desc = "Close all buffers" }
 )
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
-if not vim.g.neovide then
-  vim.keymap.set({ "v", "i" }, "<C-c>", "<Plug>OSCYankVisual<CR>", { desc = "Copy" })
-end
+vim.keymap.set("v", "<A-y>", "<Plug>OSCYankVisual<CR>", { desc = "Copy" })
 map("n", "<F5>", function()
   local filename = vim.fn.expand "%:t"
   local cword = vim.fn.expand "<cword>"

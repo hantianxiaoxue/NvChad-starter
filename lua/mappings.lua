@@ -8,6 +8,12 @@ local map = vim.keymap.set
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
 
+map(
+  { "n", "v", "i" },
+  "<leader>a",
+  '<cmd>lua require("nvchad.tabufline").closeAllBufs()<CR>',
+  { desc = "Close all buffers" }
+)
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 if not vim.g.neovide then
   vim.keymap.set({ "v", "i" }, "<C-c>", "<Plug>OSCYankVisual<CR>", { desc = "Copy" })

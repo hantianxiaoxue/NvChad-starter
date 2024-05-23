@@ -4,7 +4,8 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "tsserver", "jsonls", "volar", "rust_analyzer", "vimls", "slint_lsp", "clangd" }
+local servers =
+  { "html", "cssls", "tsserver", "jsonls", "volar", "rust_analyzer", "vimls", "slint_lsp", "clangd", "bashls" }
 
 local npm_home = os.getenv "NPM_HOME" or ""
 -- lsps with default config

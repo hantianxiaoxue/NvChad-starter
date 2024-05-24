@@ -232,6 +232,7 @@ return {
     lazy = false,
     init = function()
       vim.g.lt_quickfix_list_toggle_map = "<Space>q"
+      vim.g.lt_location_list_toggle_map = "<Space>ql"
     end,
   },
   {

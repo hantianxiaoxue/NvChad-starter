@@ -182,11 +182,13 @@ map("n", "<A-k>", "<Cmd>lua require('vscode-neovim').call('workbench.action.navi
 map("n", "<A-j>", "<Cmd>lua require('vscode-neovim').call('workbench.action.navigateDown')<CR>")
 
 -- switch im
-if vim.fn.executable "AIMSwitcher.exe" == 1 then
-  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-    pattern = { "*" },
-    callback = function()
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  pattern = { "*" },
+  callback = function()
+    if vim.fn.executable "AIMSwitcher.exe" == 1 then
       vim.fn.system "AIMSwitcher.exe --imm 0"
-    end,
-  })
-end
+    elseif vim.fn.executable "fcitx5-remote" == 1 then
+      vim.fn.system "fcitx5-remote -c"
+    end
+  end,
+})

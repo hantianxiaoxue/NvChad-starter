@@ -7,35 +7,33 @@ return {
     end,
   },
   {
-    "mrjones2014/smart-splits.nvim",
-    lazy = false,
-    config = function()
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-h>", function()
-        require("smart-splits").move_cursor_left()
-      end)
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-j>", function()
-        require("smart-splits").move_cursor_down()
-      end)
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-k>", function()
-        require("smart-splits").move_cursor_up()
-      end)
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-l>", function()
-        require("smart-splits").move_cursor_right()
-      end)
-
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-->", function()
-        require("smart-splits").resize_up()
-      end)
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-=>", function()
-        require("smart-splits").resize_down()
-      end)
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-_>", function()
-        require("smart-splits").resize_left()
-      end)
-      vim.keymap.set({ "n", "t", "v", "i" }, "<A-+>", function()
-        require("smart-splits").resize_right()
-      end)
-    end,
+    "letieu/wezterm-move.nvim",
+    keys = { -- Lazy loading, don't need call setup() function
+      {
+        "<A-h>",
+        function()
+          require("wezterm-move").move "h"
+        end,
+      },
+      {
+        "<A-j>",
+        function()
+          require("wezterm-move").move "j"
+        end,
+      },
+      {
+        "<A-k>",
+        function()
+          require("wezterm-move").move "k"
+        end,
+      },
+      {
+        "<A-l>",
+        function()
+          require("wezterm-move").move "l"
+        end,
+      },
+    },
   },
   { "ojroques/vim-oscyank", lazy = false },
   {

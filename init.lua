@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   pattern = { "*" },
   callback = function()
     if vim.fn.executable "AIMSwitcher.exe" == 1 then
-      vim.fn.system "AIMSwitcher.exe --imm 0"
+     local ai vim.fn.system "switch.bat"
     elseif vim.fn.executable "fcitx5-remote" == 1 then
       vim.fn.system "fcitx5-remote -c"
     end

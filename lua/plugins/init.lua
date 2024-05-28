@@ -7,6 +7,11 @@ return {
     end,
   },
   {
+    "nvim-zh/colorful-winsep.nvim",
+    config = true,
+    event = { "WinNew" },
+  },
+  {
     "letieu/wezterm-move.nvim",
     keys = { -- Lazy loading, don't need call setup() function
       {

@@ -110,12 +110,21 @@ return {
 							if entry.type == "file" then
 								require("oil.actions").open_external.callback()
 							else
+								local wsl = vim.fn.has("wsl") == 1
+								if wsl then
+									if string.match(dir, "^(/mnt/(.))") then
+										dir = string.gsub(dir, "/mnt/(.)", "%1:")
+									else
+										dir = "\\\\wsl.localhost\\Debian" .. dir
+									end
+									dir = string.gsub(dir, "/", "\\")
+								end
 								local opts = {
 									args = { dir .. entry.name },
 									stdio = { nil, nil, vim.loop.new_pipe(false) },
 									detached = true,
 								}
-								if vim.fn.has("win32") == 1 or vim.fn.has("wsl") == 1 then
+								if vim.fn.has("win32") == 1 or wsl then
 									vim.loop.spawn("explorer.exe", opts)
 								else
 									vim.loop.spawn("xdg-open", opts)

@@ -109,13 +109,17 @@ return {
 							end
 							if entry.type == "file" then
 								require("oil.actions").open_external.callback()
-							elseif vim.fn.has("win32") == 1 then
+							else
 								local opts = {
 									args = { dir .. entry.name },
 									stdio = { nil, nil, vim.loop.new_pipe(false) },
 									detached = true,
 								}
-								vim.loop.spawn("explorer.exe", opts)
+								if vim.fn.has("win32") == 1 or vim.fn.has("wsl") == 1 then
+									vim.loop.spawn("explorer.exe", opts)
+								else
+									vim.loop.spawn("xdg-open", opts)
+								end
 							end
 						end,
 						desc = "Open external",

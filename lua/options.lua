@@ -22,5 +22,5 @@ end
 -- title 在powershell使用时要在profile中添加$env:TERM = "xterm-256color"
 vim.opt.title = true
 vim.opt.titlelen = 20 -- do not shorten title
-vim.opt.titlestring = '%{expand("%:t")} NVIM'
+vim.opt.titlestring = ' %{expand("%:t")}'
 vim.opt.titleold=vim.fn.getcwd()

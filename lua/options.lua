@@ -23,3 +23,4 @@ end
 vim.opt.title = true
 vim.opt.titlelen = 20 -- do not shorten title
 vim.opt.titlestring = '%{expand("%:t")} NVIM'
+vim.opt.titleold=vim.fn.getcwd()

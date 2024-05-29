@@ -12,7 +12,7 @@ return {
     event = { "WinNew" },
   },
   {
-    "letieu/wezterm-move.nvim",
+    "git@github.com:hantianxiaoxue/wezterm-move.nvim",
     keys = { -- Lazy loading, don't need call setup() function
       {
         "<A-h>",
@@ -280,7 +280,7 @@ return {
     end,
   },
   {
-    "dyng/ctrlsf.vim",
+    "git@github.com:hantianxiaoxue/ctrlsf.vim",
     lazy = false,
     init = function()
       vim.g.ctrlsf_ackprg = "rg"

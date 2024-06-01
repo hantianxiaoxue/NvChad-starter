@@ -102,6 +102,10 @@ require("lazy").setup({
     end,
   },
   {
+		"rhysd/clever-f.vim",
+		lazy = false,
+	},
+  {
     "numToStr/Comment.nvim",
     keys = {
       { "gcc", mode = "n", desc = "Comment toggle current line" },

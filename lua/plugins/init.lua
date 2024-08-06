@@ -211,7 +211,28 @@ return {
 	},
 	{ "slint-ui/vim-slint", lazy = false },
 	{
-		"phaazon/hop.nvim",
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {
+			labels = "asdfghjklqwertyuiopzxcvbnm",
+			label = { uppercase = false },
+			search = { multi_window = true },
+		},
+    -- stylua: ignore
+    keys = {
+      { "?",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+    },
+	},
+	{
+		"ggandor/leap.nvim",
+		lazy = false,
+		config = function()
+			vim.keymap.set({ "n", "v" }, "<A-e>", "<Plug>(leap)")
+		end,
+		leap,
+	},
+	--[[ {
+		dphaazon/hop.nvim",
 		lazy = false,
 		config = function()
 			vim.keymap.set({ "n", "v" }, "<A-e>", "<cmd>HopWordMW<CR>")
@@ -219,7 +240,7 @@ return {
 			vim.keymap.set({ "n", "v" }, "?", "<cmd>HopChar2MW<CR>")
 			require("hop").setup()
 		end,
-	},
+	} ,]]
 	{
 		"andymass/vim-matchup",
 		lazy = false,

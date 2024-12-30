@@ -123,7 +123,7 @@ require("lazy").setup({
 }, lazy_config)
 -- keymap
 
-map("n", "vv", "^v$", { desc = "Select current line" })
+map("n", "vv", "^v$h", { desc = "Select current line" })
 map("n", "<leader>y", '"ayiw', { desc = "Copy current word" })
 map("n", "<leader>p", 'viw"ap', { desc = "Paste current word" })
 map("v", "<", "<gv", { desc = "Indent left" })
